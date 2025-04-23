@@ -1,0 +1,48 @@
+[
+  {
+    "name": "get_course_metadata",
+    "description": "Fetch metadata about available courses such as course title, description, and duration.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "course_id": {
+          "type": "string",
+          "description": "The ID of the course to fetch metadata for."
+        }
+      },
+      "required": ["course_id"]
+    }
+  },
+  {
+    "name": "get_user_enrollments",
+    "description": "Get a list of courses the user is enrolled in.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "The user ID to fetch enrollment data for."
+        }
+      },
+      "required": ["user_id"]
+    }
+  },
+  {
+    "name": "get_progress_data",
+    "description": "Fetch progress data for a user in a specific course.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "The ID of the user."
+        },
+        "course_id": {
+          "type": "string",
+          "description": "The ID of the course."
+        }
+      },
+      "required": ["user_id", "course_id"]
+    }
+  }
+]

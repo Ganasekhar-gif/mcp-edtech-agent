@@ -1,1 +1,5 @@
-Hi
+openai>=1.14.2
+requests
+fastapi
+uvicorn
+python-dotenv
