@@ -69,9 +69,21 @@ sunbird-ai-assistant/
 PYTHONPATH=D:/sunbird-ai-assistant  # working directory change accordingly                                                                                                                              
 MCP_MODEL=llama3                                                                                                                                                                               
 MCP_API_BASE=http://localhost:11434/v1                                                                                                                                                             
-MCP_API_KEY=null                                                                                                                                                                                       
+MCP_API_KEY=null 
 
-3. Run the Assistant                                                                                                                                                                                  
+## 🧪 Testing Instructions (LLaMA 3 Required)                                                                                                                                      
+
+To run this project with LLaMA 3:                                                                                                                                                        
+
+1. Download and install [Ollama](https://ollama.com/download)
+2. Open your terminal and run:                                                                                                                                                          
+   ```bash                                                                                                                                                                      
+   ollama pull llama3
+   ollama run llama3                                                                                                                                                                                     
+   ollama serve                                                                                                                                                                                               
+
+
+3. Run the Assistant                                                                                                                                                                                                                                                            
 python cli/main.py                                                                                                                                                                                       
 
 Note: PYTHONPATH is automatically loaded and appended to sys.path during runtime.                                                                                                                     
