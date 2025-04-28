@@ -1,10 +1,11 @@
 import requests
 from configs.settings import BASE_URL
 
+
 def search_courses(query: str = "") -> dict:
     """
     Searches for courses using the Sunbird Ed API.
-    
+
     Parameters:
         query (str): Optional keyword to search for specific courses.
 

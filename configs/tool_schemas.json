@@ -44,5 +44,19 @@
       },
       "required": ["user_id", "course_id"]
     }
+  },
+  {
+    "name": "fetch_user_summary",
+    "description": "Summarizes the current user's course progress and active enrollments.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "Unique user ID"
+        }
+      },
+      "required": ["user_id"]
+    }
   }
 ]

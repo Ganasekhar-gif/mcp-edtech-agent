@@ -1,11 +1,12 @@
 import requests
 import os
+import re
 from context.installation_context import load_installation_context
 from configs.settings import MCP_API_BASE, MCP_MODEL
 from tools.course_metadata import search_courses
 from tools.user_enrollment import get_user_enrollments
 from tools.progress_tracker import get_learning_progress
-import re
+from tools.personalization_tool import fetch_user_summary
 
 
 def extract_user_id_from_prompt(prompt: str) -> str:
@@ -42,7 +43,7 @@ def call_llama3(prompt: str, tools: list = None) -> str:
 
     # User enrollment
     elif "enrollment" in prompt.lower() or "enrolled" in prompt.lower():
-        user_id = extract_user_id_from_prompt(prompt)  # Dynamically extract user ID
+        user_id = extract_user_id_from_prompt(prompt)
         enrollment_response = get_user_enrollments(user_id)
         if "courses" in enrollment_response.get('result', {}):
             courses = enrollment_response['result']['courses']
@@ -55,7 +56,7 @@ def call_llama3(prompt: str, tools: list = None) -> str:
 
     # User progress
     elif "progress" in prompt.lower() or "profile" in prompt.lower():
-        user_id = extract_user_id_from_prompt(prompt)  # Dynamically extract user ID
+        user_id = extract_user_id_from_prompt(prompt)
         enrollment_response = get_user_enrollments(user_id)
 
         if "courses" in enrollment_response.get('result', {}):
@@ -81,7 +82,17 @@ def call_llama3(prompt: str, tools: list = None) -> str:
         else:
             return f"Could not retrieve enrolled courses to check progress for user '{user_id}'."
 
-    # If no tool matched, fallback to LLM
+    # User summary (overview)
+    elif "summary" in prompt.lower() or "overview" in prompt.lower():
+        user_id = extract_user_id_from_prompt(prompt)
+        try:
+            summary_result = fetch_user_summary(user_id)
+            return summary_result.get("result", "Could not generate summary.")
+
+        except Exception as e:
+            return f"[Summary Error] {str(e)}"
+
+    # Fallback to LLM
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": prompt}
