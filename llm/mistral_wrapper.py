@@ -3,6 +3,7 @@ import os
 import re
 from context.installation_context import load_installation_context
 from configs.settings import MCP_API_BASE, MCP_MODEL
+from configs.settings import MCP_API_KEY
 from tools.course_metadata import search_courses
 from tools.user_enrollment import get_user_enrollments
 from tools.progress_tracker import get_learning_progress
@@ -100,9 +101,13 @@ def call_llama3(prompt: str, tools: list = None) -> str:
 
     try:
         response = requests.post(
-            f"{MCP_API_BASE}/chat/completions",
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {MCP_API_KEY}",
+                "Content-Type": "application/json"
+            },
             json={
-                "model": MCP_MODEL,
+                "model": "llama3-8b-8192",
                 "messages": messages,
                 "temperature": 0.7
             },
@@ -113,3 +118,4 @@ def call_llama3(prompt: str, tools: list = None) -> str:
         return result["choices"][0]["message"]["content"]
     except Exception as e:
         return f"[LLM Error] {str(e)}"
+

@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "http://localhost:3010"
 
 load_dotenv()
 
