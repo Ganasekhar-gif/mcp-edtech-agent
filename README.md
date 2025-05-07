@@ -1,6 +1,6 @@
 # 🧠 Sunbird Ed AI Assistant (MCP Protocol Integration)
 
-This project is a prototype AI assistant integrated with the **Sunbird Ed** learning platform using **Model Context Protocol (MCP)** concepts. The goal is to enable contextual, conversational support for learners and admins, powered by **LLaMA 3** (via Ollama) and mock Sunbird APIs.
+This project is a prototype AI assistant integrated with the **Sunbird Ed** learning platform using **Model Context Protocol (MCP)** concepts. The goal is to enable contextual, conversational support for learners and admins, powered by **LLaMA 3** (via Ollama) and Sunbird APIs.
 
 > ✅ Successfully demonstrates API tooling, agent reasoning, and installation-level context using mocked data.
 
@@ -18,7 +18,7 @@ Sunbird Ed is a modular Digital Public Good (DPG) that supports personalized lea
 ## 🛠 Tech Stack
 
 - **Language**: Python  
-- **Model**: [LLaMA 3 (via Ollama)](https://ollama.com/library/llama3)  
+- **Model**: [LLaMA 3 (via Groq API)](https://console.groq.com/) 
 - **MCP SDK**: Conceptually implemented with tool schemas (No official Python MCP Agent SDK used yet)  
 - **API Simulation**: Local mock APIs (Mockoon)  
 - **Env Management**: `dotenv`  
@@ -39,25 +39,22 @@ Sunbird Ed is a modular Digital Public Good (DPG) that supports personalized lea
 
    ```env
    PYTHONPATH=/path/to/sunbird-ai-assistant   # Replace with your actual path
-   MCP_MODEL=llama3
-   MCP_API_BASE=http://localhost:11434/v1
-   MCP_API_KEY=null
+   MCP_MODEL=llama3-8b-8192             # Replace with any other model
+   MCP_API_BASE=https://api.groq.com/openai/v1
+   MCP_API_KEY=your_groq_api_key_here    # Paste your API key here
+
    ```
 
 ## 🧪 Testing Instructions (LLaMA 3 Required)
 
 To run the project using LLaMA 3:
 
-1. Install [Ollama](https://ollama.com/download)
-2. Pull and run the LLaMA 3 model:
+1. Start the Assistant:
+   To run the assistant using Groq's hosted LLaMA 3 or other model:
 
-   ```bash
-   ollama pull llama3
-   ollama run llama3
-   ollama serve
-   ```
-
-3. Start the Assistant:
+   Sign up and get an API key from [Groq Console](https://console.groq.com/)
+   Add the API key to your `.env` file as shown above
+   Start the assistant:
 
    ```bash
    python cli/main.py

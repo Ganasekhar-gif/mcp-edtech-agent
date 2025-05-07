@@ -107,7 +107,7 @@ def call_llama3(prompt: str, tools: list = None) -> str:
                 "Content-Type": "application/json"
             },
             json={
-                "model": "llama3-8b-8192",
+                "model": MCP_MODEL,
                 "messages": messages,
                 "temperature": 0.7
             },
