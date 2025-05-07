@@ -1,10 +1,10 @@
 # 🧠 Sunbird Ed AI Assistant (MCP Protocol Integration)
 
-This project is a prototype AI assistant integrated with the **Sunbird Ed** learning platform using **Model Context Protocol (MCP)** concepts. The goal is to enable contextual, conversational support for learners and admins, powered by **LLaMA 3** (via Ollama) and Sunbird APIs.
+This project is a prototype AI assistant integrated with the **Sunbird Ed** learning platform using **Model Context Protocol (MCP)** concepts. The goal is to enable contextual, conversational support for learners and admins, powered by **LLaMA 3** (via the [Groq API](https://console.groq.com/)) and Sunbird APIs.
 
 > ✅ Successfully demonstrates API tooling, agent reasoning, and installation-level context using mocked data.
 
-for architecture workflow please refer to: [architecture.md](architecture.md)
+For architecture workflow, please refer to: [architecture.md](architecture.md)
 
 ## 🚀 Project Overview
 
@@ -12,18 +12,23 @@ Sunbird Ed is a modular Digital Public Good (DPG) that supports personalized lea
 
 - Answer user queries about course metadata, enrollments, and progress.
 - Simulate Sunbird Ed behavior using mock API responses.
-- Provide intelligent responses using an LLM (LLaMA 3) with tool-calling logic.
+- Provide intelligent responses using an LLM (LLaMA 3 via the Groq API) with tool-calling logic.
 - Lay the foundation for personalized learning support using MCP.
 
 ## 🛠 Tech Stack
 
 - **Language**: Python  
-- **Model**: [LLaMA 3 (via Groq API)](https://console.groq.com/) 
-- **MCP SDK**: Conceptually implemented with tool schemas (No official Python MCP Agent SDK used yet)  
+- **Model**: [LLaMA 3 (via Groq API)](https://console.groq.com/)  
+- **MCP Protocol**: Integrated conceptually, leveraging Groq and LLaMA's contextual AI capabilities. (Note: No official Python MCP Agent SDK used yet)  
 - **API Simulation**: Local mock APIs (Mockoon)  
 - **Env Management**: `dotenv`  
 - **CLI Interface**: Command-line interface  
-- **Pycharm**
+- **IDE**: Pycharm
+
+## 🚧 Updates & Next Steps
+
+- **MCP SDK**: MCP SDK is conceptualized and integrated manually via the tool schemas, leveraging Groq's LLaMA 3 model. Future versions may integrate a more formal MCP SDK when available.
+
 
 ## ⚙️ Setup Instructions
 
@@ -39,7 +44,7 @@ Sunbird Ed is a modular Digital Public Good (DPG) that supports personalized lea
 
    ```env
    PYTHONPATH=/path/to/sunbird-ai-assistant   # Replace with your actual path
-   MCP_MODEL=llama3-8b-8192             # Replace with any other model
+   MCP_MODEL=llama3-8b-8192             # Replace with any other model available in groq
    MCP_API_BASE=https://api.groq.com/openai/v1
    MCP_API_KEY=your_groq_api_key_here    # Paste your API key here
 
